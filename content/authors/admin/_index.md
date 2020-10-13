@@ -61,7 +61,7 @@ social:
 # and uncomment the lines below.
 - icon: cv
   icon_pack: ai
-  link: media/resume.pdf
+  link: media/mobrien_resume.pdf
 
 # Email for Contact widget or Gravatar
 email: "mikeob9@gmail.com"
@@ -72,4 +72,4 @@ highlight_name: true
 
 Mike O'Brien is a Faculty Research Assistant in the fish movement ecology laboratory at the Chesapeake Biological Laboratory. His research interests include fish ecology, acoustic telemetry, and predictive modeling.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/mobrien resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/mobrien_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
