@@ -1,39 +1,36 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Mike O'Brien
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: Faculty Research Assistant
 
 # Organizations/Affiliations to show in About widget
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
+- name: University of Maryland Center for Environmental Science, Chesapeake Biological Laboratory
+  url: https://www.umces.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include fish movement and ecology, acoustic telemetry, and predictive modeling.
 
 # Interests to show in About widget
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Fish Ecology
+- Animal Biotelemetry
+- Geographic Information Systems
 
 # Education to show in About widget
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
+  - course: MSc in Fisheries
+    institution: University of Maryland, College Park
+    year: 2013
+  - course: BScMAS in Marine Science and Biology
+    institution: University of Miami
     year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -42,41 +39,37 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '/#contact'
+  link: mailto:mikeob9@gmail.com
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: graduation-cap  # OR `google-scholar`
-  icon_pack: fas  # OR `ai`
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://twitter.com/ruggafish
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.com/citations?user=IMIq9P4AAAAJ
+- icon: orcid
+  icon_pack: ai
+  link: https://orcid.org/0000-0003-1420-6395
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
-- icon: linkedin
-  icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://github.com/mhpob
+- icon: stackoverflow
+  icon_pack: ai
+  link: https://stackoverflow.com/users/7496818/mike-obrien
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/media/resume.pdf`, enable `ai` icons in `params.toml`, 
 # and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: media/resume.pdf
+- icon: cv
+  icon_pack: ai
+  link: media/resume.pdf
 
 # Email for Contact widget or Gravatar
-email: ""
+email: "mikeob9@gmail.com"
 
 # Highlight the author in author lists? (true/false)
-highlight_name: false
+highlight_name: true
 
-# Organizational groups that you belong to (for People widget)
-#   Remove this if you are not using the People widget.
-user_groups:
-- Principal Investigators
----
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Mike O'Brien is a Faculty Research Assistant in the laboratory of Dr. David Secor. His research interests include fish movement and ecology, acoustic telemetry, and predictive modeling.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
-
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/mobrien resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
