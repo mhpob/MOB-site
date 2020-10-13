@@ -70,6 +70,6 @@ email: "mikeob9@gmail.com"
 highlight_name: true
 ---
 
-Mike O'Brien is a Faculty Research Assistant in the laboratory of Dr. David Secor. His research interests include fish movement and ecology, acoustic telemetry, and predictive modeling.
+Mike O'Brien is a Faculty Research Assistant in the fish movement ecology laboratory at the Chesapeake Biological Laboratory. His research interests include fish ecology, acoustic telemetry, and predictive modeling.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/mobrien resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
