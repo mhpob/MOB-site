@@ -1,0 +1,133 @@
+---
+title: 'Academic: the website builder for Hugo'
+subtitle: 'Create a beautifully simple website in under 10 minutes :rocket:'
+summary: Create a beautifully simple website in under 10 minutes.
+authors:
+- admin
+# tags:
+# - Academic
+# - 开源
+categories:
+- Demo
+- 教程
+date: "2020-10-16T00:00:00Z"
+lastmod: Sys.time()
+featured: false
+draft: false
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr); library(sf)
+
+nc <- st_read(system.file("shape/nc.shp", package="sf")) %>% 
+  st_transform(6542)
+
+misc_polygon <- nc[5,]
+
+misc_polygon_centroid <- st_centroid(misc_polygon)
+
+plot(misc_polygon$geometry)
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+```
+
+
+def.par <- par(no.readonly = TRUE)
+
+par(mfrow = c(2, 3))
+plot(misc_polygon$geometry)
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+
+centr_buff <- misc_polygon_centroid %>% 
+  st_buffer(30000) %>% 
+  st_cast('POINT')
+
+plot(misc_polygon$geometry)
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+plot(centr_buff$geometry, add = T)
+
+# There are 30 vertices per quarter of the circle (this can be changed, see ?sf::st_buffer)
+##  For a staight line through the center, we want to connect vertices
+##    opposite from one another (vertex 1 and 61 are a pair; vertex 2 and 62; etc.)
+##  We only need to calculate these one way (line connecting 1 to 61 only, no need for 61 to 1)
+
+# sf::st_union is not a "tidy" function; we want to combine points by row here,
+#   but sf::st_union provides a Cartesian product (all combinations of points).
+#   geotidy::st_union does what we want -- a row-wise union.
+
+endpoints <- geotidy::st_union(st_geometry(slice(centr_buff, 1:60)),
+                               st_geometry(slice(centr_buff, 61:120)))
+
+# cast the start/end points to a LINESTRING
+lines <- endpoints %>% 
+  st_cast('LINESTRING')
+
+plot(misc_polygon$geometry)
+plot(centr_buff$geometry, add = T)
+plot(lines, add = T)
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+
+# create simple feature collection with the correct CRS and convert to simple features
+lines <-  lines %>% 
+  st_sfc(crs = 6542) %>%
+  st_as_sf()
+
+
+lines <- lines %>% 
+  st_intersection(st_geometry(misc_polygon))
+
+plot(misc_polygon$geometry)
+plot(centr_buff$geometry, add = T)
+plot(lines$x, add = T, col = 'blue')
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+
+winner <- lines %>% 
+  slice(., which.min(st_length(.)))
+
+plot(misc_polygon$geometry)
+plot(centr_buff$geometry, add = T)
+plot(lines$x, add = T, col = 'blue')
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+plot(winner, add = T, col = 'red')
+
+plot(type = 'n')
+
+par(def.par)
+
+
+
+
+
+
+st_misc_polygon_verts <- misc_polygon %>% 
+  st_cast('POLYGON') %>% 
+  st_cast('POINT')
+
+closest <- misc_polygon_verts %>% 
+  st_distance(misc_polygon_centroid) %>% 
+  which.min()
+
+closest <- misc_polygon_verts %>% 
+  slice(closest)
+
+plot(misc_polygon$geometry)
+plot(misc_polygon_centroid$geometry, add = T, col = 'red')
+plot(closest$geometry, add = T, col = 'blue')
+
+
+
+nearest <- misc_polygon_verts %>% 
+  st_nearest_points(misc_polygon_centroid) %>% 
+  st_as_sf() %>% 
+  mutate(length = st_length(x)) %>% 
+  slice(which.min(length))
+
+plot(nearest$x, add = T, lty = 'dashed')
+
+
+
+centroid_buff %>% 
